@@ -86,7 +86,7 @@ doxygen
 %install
 %make_install
 # It's header only on linux so remove the libraries generated
-rm -f %{buildroot}/%{_libdir}/libnowide*
+rm -f %{buildroot}/usr/lib*/libnowide*
 
 # move to boost157 directory in epel
 %if 0%{?rhel}
