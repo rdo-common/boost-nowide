@@ -25,7 +25,7 @@ BuildRequires: cmake
 BuildRequires: boost-devel
 %else
 # this isn't in EPEL yet ... but it will be soon
-BuildRequires:  boost157-devel
+BuildRequires:  boost159-devel
 BuildRequires:  cmake3
 %endif
 
@@ -40,7 +40,7 @@ Provides: boost-nowide-static = %{version}-%{release}
 Requires: boost-devel
 %else
 # this isn't in EPEL yet ... but it will be soon
-Requires:  boost157-devel
+Requires:  boost159-devel
 %endif
 
 Summary: The header files to compile against boost.nowide
@@ -74,8 +74,8 @@ This provides the documentation for boost.nowide in html format.
 %cmake -DNOWIDE_BUILD_STATIC=ON -DNOWIDE_SYSTEM_INCLUDE=ON
 %else
 %cmake3 -DNOWIDE_BUILD_STATIC=ON -DNOWIDE_SYSTEM_INCLUDE=ON \
-        -DBOOST_INCLUDEDIR=/usr/include/boost157 \
-        -DBOOST_LIBRARYDIR=%{_libdir}/boost157
+        -DBOOST_INCLUDEDIR=/usr/include/boost159 \
+        -DBOOST_LIBRARYDIR=%{_libdir}/boost159
 %endif
 %__make %{gh_project}
 
@@ -88,10 +88,10 @@ doxygen
 # It's header only on linux so remove the libraries generated
 rm -f %{buildroot}/usr/lib*/libnowide*
 
-# move to boost157 directory in epel
+# move to boost159 directory in epel
 %if 0%{?rhel}
-mkdir -p %{buildroot}%{_includedir}/boost157/boost
-mv %{buildroot}%{_includedir}/boost/nowide %{buildroot}%{_includedir}/boost157/boost/
+mkdir -p %{buildroot}%{_includedir}/boost159/boost
+mv %{buildroot}%{_includedir}/boost/nowide %{buildroot}%{_includedir}/boost159/boost/
 rmdir %{buildroot}%{_includedir}/boost
 %endif
 
@@ -109,7 +109,7 @@ rmdir %{buildroot}%{_includedir}/boost
 %if 0%{?fedora}
 %{_includedir}/boost/nowide
 %else
-%{_includedir}/boost157/boost/nowide
+%{_includedir}/boost159/boost/nowide
 %endif
 
 %changelog
